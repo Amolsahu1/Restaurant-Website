@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amol Da Dhaba - Indian Restaurant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        /* Import a stylish font for the restaurant name */
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body,
+        html {
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        header video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            animation: navDrop 0.7s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            min-height: 70px;
+        }
+
+        @keyframes navDrop {
+            0% {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sticky-nav h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            color: #ffb347;
+            letter-spacing: 3px;
+            margin: 0;
+            transition: color 0.3s;
+            animation: namePop 1.1s cubic-bezier(.68, -0.55, .27, 1.55);
+            text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.18);
+        }
+
+        @keyframes namePop {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) rotate(-8deg);
+            }
+
+            80% {
+                opacity: 1;
+                transform: scale(1.1) rotate(2deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        .sticky-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sticky-nav ul li {
+            margin: 0 18px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .sticky-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 10px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .sticky-nav ul li a:after {
+            content: '';
+            display: block;
+            margin: 0 auto;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffb347 0%, #e85a4f 100%);
+            border-radius: 2px;
+            transition: width 0.3s;
+        }
+
+        .sticky-nav ul li a:hover {
+            color: #ffb347;
+        }
+
+        .sticky-nav ul li a:hover:after {
+            width: 80%;
+        }
+
+        .sticky-nav ul li:hover {
+            transform: scale(1.08) translateY(-2px);
+        }
+
+        .hero-text {
+            text-align: center;
+            color: white;
+            margin-top: 22vh;
+            animation: fadeInUp 1.2s 0.3s both;
+        }
+
+        .hero-text h2 {
+            font-size: 3rem;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 1.5px;
+            animation: textPop 1.2s cubic-bezier(.68, -0.55, .27, 1.55);
+            color: #fff;
+            background: linear-gradient(90deg, #e85a4f 0%, #ffb347 100%);
+            padding: 12px 32px;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+            display: inline-block;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.45);
+        }
+
+        @keyframes textPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+
+            80% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-text button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            transition: background 0.3s, transform 0.2s;
+            animation: fadeInUp 1.2s 0.7s both;
+        }
+
+        .hero-text button:hover {
+            background: #e85a4f;
+            transform: scale(1.07);
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            margin: 50px 0;
+        }
+
+        .carousel-inner {
+            display: flex;
+            animation: slide-right 20s linear infinite;
+            width: 100%;
+            gap: 0px;
+        }
+
+        .carousel-item {
+            flex: 0 0 18%;
+            padding: 8px 2px;
+            margin: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-item img {
+            width: 90%;
+            height: 200px;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .carousel-caption {
+            margin-top: 6px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #222;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 8px;
+            display: block;
+            padding: 6px 18px 4px 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+            text-align: center;
+            max-width: 90%;
+        }
+
+        @keyframes slide-right {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .form-section {
+            padding: 50px;
+            background: #f5f5f5;
+        }
+
+        .form-section h3 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input,
+        form textarea {
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        form button {
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+
+            .carousel-item img {
+                width: 100%;
+            }
+        }
+
+        /* Animated scroll effects */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(.4, 0, .2, 1), transform 0.8s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .scroll-animate.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Offer Modal Styles */
+        .offer-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .offer-modal-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .offer-modal {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
+            padding: 36px 32px 28px 32px;
+            max-width: 95vw;
+            width: 400px;
+            text-align: center;
+            position: relative;
+            animation: fadeInUp 0.7s;
+        }
+
+        .offer-modal h3 {
+            color: #e85a4f;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .offer-modal p {
+            color: #333;
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+        }
+
+        .offer-modal .close-offer-btn {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #e85a4f;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1100px) {
+            .carousel-item {
+                flex: 0 0 28%;
+            }
+
+            .carousel-inner {
+                gap: 8px;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .carousel-item {
+                flex: 0 0 40%;
+            }
+
+            .carousel-inner {
+                gap: 12px;
+            }
+
+            .form-section {
+                padding: 30px 10px;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .carousel-item {
+                flex: 0 0 85%;
+                max-width: 95vw;
+            }
+
+            .carousel-inner {
+                gap: 10px;
+            }
+
+            .carousel-item img {
+                height: 120px;
+                max-width: 90vw;
+            }
+
+            .carousel {
+                margin: 12px 0;
+            }
+
+            .form-section {
+                padding: 18px 4px;
+            }
+
+            .offer-modal {
+                width: 95vw;
+                padding: 18px 4vw 18px 4vw;
+            }
+
+            .scroll-animate {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .carousel-item {
+                flex: 0 0 98%;
+                max-width: 99vw;
+            }
+
+            .carousel-item img {
+                height: 90px;
+                max-width: 95vw;
+            }
+
+            .carousel {
+                margin: 8px 0;
+            }
+
+            header video {
+                min-width: 100vw;
+                min-height: 100vh;
+                width: 100vw;
+                height: 100vh;
+                object-fit: cover;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .carousel-item img {
+                height: 60px;
+            }
+        }
+
+        /* Fix for video not showing on mobile */
+        header video {
+            display: block;
+        }
+
+        /* Make iframe and images responsive */
+        #map iframe {
+            width: 100% !important;
+            min-width: 0 !important;
+            height: 300px;
+            max-width: 100vw;
+        }
+
+        img,
+        iframe {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Social icons responsive */
+        #social img {
+            width: 32px;
+            height: 32px;
+        }
+
+        @media screen and (max-width: 400px) {
+            #social img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body id="home">
+    <header>
+        <video autoplay muted loop>
+            <source src="https://cdn.pixabay.com/video/2019/10/09/27678-365460609_large.mp4" type="video/webm">
+            <source src="https://www.videvo.net/videvo_files/converted/2016_08/preview/160721_Cooking_01_1080p.mp447892.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <nav class="sticky-nav">
+            <h1>Amol Da Dhaba</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reserve">Reserve</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero-text">
+            <h2>Namaste! Swagat Hai Aapka</h2>
+            <!-- Button moved below the text for better vertical alignment -->
+            <div style="margin-top: 24px;">
+                <button onclick="document.getElementById('reserve').scrollIntoView({ behavior: 'smooth' });">Reserve a Table
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="carousel scroll-animate" id="menu">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/cFaw0vWCPQhZg14tYNS3VuLf9lmD6atyc2NF9nSKPvs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vcXM2amhP/a3FTdWFPNURKUkNM/QnVGTWhtRHFyTThR/Z1lMbVJHNzhHNG1w/NC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTl0/WldScC9ZUzVwYzNS/dlkydHdhRzkwL2J5/NWpiMjB2YVdRdk1U/UTUvTVRVMk56Y3hN/aTl3YUc5MC9ieTl0/ZFhSMGIyNHRhMkZq/L1kyaHBMV0pwY25s/aGJta3QvZDJsMGFD/MXpZV3hoWkMxaS9i/M0pvWVc1cExXRnVa/QzFqL2FIVnBMWEJw/ZEdoaExYTmwvY25a/bFpDMXBiaTFrYVhO/by9MV2x6YjJ4aGRH/VmtMVzl1L0xXMWhk/QzEwYjNBdWFuQm4v/UDNNOU5qRXllRFl4/TWlaMy9QVEFtYXow/eU1DWmpQV1pJL1Zs/WkRTVFZmZEUwdE9I/cHovYTNoRk1uZHha/R3AwV25ReC9jRk5M/ZERoTGFuQnlNRVJt/L2RXbzBibGs5.jpeg" alt="Dish 1">
+                <div class="carousel-caption">Hyderabadi Biryani</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/NUVO3Cg1d6zaiiHjd7OPgIBY0avBiLdrCAhlyS42PYc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vV1JUdlZz/M0NuTGQ3Y2hyYmg4/c1E4WWxUZ3RvQldR/Sm5GTDRoWHUwLXgy/NC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTkw/YUdWai9kWEp5ZVcx/dmJXMTVMbU52L2JT/OTNjQzFqYjI1MFpX/NTAvTDNWd2JHOWha/SE12TWpBeS9NUzh3/T1M5aWRYUjBaWEl0/L2NHRnVaV1Z5TFcx/aGMyRnMvWVMxdmJt/VXRjRzkwTG1wdy9a/dw.jpeg" alt="Dish 2">
+                <div class="carousel-caption">Paneer Butter Masala</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/c2eXzkwncB63lHKDlmKapiqJbGul-c0UcJqSb5kSYxU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vOC13RGVv/d1JrRWhyUXBSZXgz/d0xaLTB3RHMwVXFq/T0tGWThPcERIaVl3/dy9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTl6/ZEdGMC9hV011ZG1W/amRHVmxlbmt1L1ky/OXRMM041YzNSbGJT/OXkvWlhOdmRYSmpa/WE12ZEdoMS9iV0p1/WVdsc2N5OHdNREl2/L05EUXdMemcwTlM5/emJXRnMvYkM5amNt/bHpjSGt0YldGei9Z/V3hoTFdSdmMyRXRj/MjkxL2RHZ3RhVzVr/YVdFdGMzUjUvYkdV/dFpuSmxaUzF3YUc5/MC9ieTVxY0dj.jpeg" alt="Dish 3">
+                <div class="carousel-caption">Masala Dosa</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/vQbVHBrsNjwUXOhGhoy8JXICsyoUqGH5UQGeqrgYOZQ/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vQUVHdFlE/UW9qWWJBRUxEV2Et/UDF4Ul8tZ1BqQUZi/YlJrSnpJLVkzeHlm/QS9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlw/YldjdS9abkpsWlhC/cGF5NWpiMjB2L2NI/SmxiV2wxYlMxd2FH/OTAvYnk5aWRYUjBa/WEl0WTJocC9ZMnRs/Ymw4ME5qWTJPRGt0/L05UUTNOell1YW5C/blAzTmwvYlhROVlX/bHpYMmg1WW5KcC9a/Q1ozUFRjME1B.jpeg" alt="Dish 4">
+                <div class="carousel-caption">Butter Chicken</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/ZZUW5xXKhyMEiWWvw9sm1QOwMqhlMHiwXxXKtJCg8DU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vT3Q0dTZx/a3pCeDA0QUs2Q1lp/XzNPRjh1QzVSZjFi/TGcxbDBNektCODhP/ay9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTkw/YUhWdC9Zbk11WkhK/bFlXMXpkR2x0L1pT/NWpiMjB2WWk5amFH/OXMvWlMxaWFHRjBk/WEpsTFhObC9jblps/WkMxd2JHRjBaUzFq/L2FHOXNaWGt0WW1o/aGRIVnkvWlMxa2FY/Tm9MVzl5YVdkcC9i/bUYwWldRdGFXNXBk/R2xoL2JHeDVMVzV2/Y25Sb1pYSnUvTFhC/aGNuUXRhVzVrYVdG/dS9MWE4xWW1OdmJu/UnBibVZ1L2RDMHhO/elF6TURrd05EVXUv/YW5Cbg.jpeg" alt="Dish 5">
+                <div class="carousel-caption">Chole Bhature</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/GeeEHxSV71UjbPSK1BnhH2uUS4JjBfTLyUmV_g48NiU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20va0hvQi1X/QXZNbGd0QVVsaFJ6/X3JSSkp3Vy1kdHZJ/c2hia1Brd2NVc1RP/OC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTl0/WldScC9ZUzVwYzNS/dlkydHdhRzkwL2J5/NWpiMjB2YVdRdk1U/RTAvTlRFMk9UQXhN/aTl3YUc5MC9ieTl0/WVc1NUxXbGtiR2t0/L2IzSXRhV1JzZVMx/aGJtUXQvWTI5amIy/NTFkQzFqYUhWMC9i/bVY1TFhOdmRYUm9M/V2x1L1pHbGhiaTFp/Y21WaGEyWmgvYzNR/dWFuQm5QM005TmpF/eS9lRFl4TWlaM1BU/QW1hejB5L01DWmpQ/V1ZoUjJobFYzaGsv/WkRneFZrRjRRMlJ3/WVVKaC9UVGxDVmpR/dE16WXdNV1JLL0xU/aG5jamw1VURGQ05F/RTk.jpeg" alt="Dish 6">
+                <div class="carousel-caption">Idli Sambar</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/3ZG1D2YyZhQzEPWBeReYc75DlYMMMjI3_iBAO8GNCog/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vSjNNQy10/bERZNjZfNXNveDFQ/RzZVRDBWYVROZ0Mt/Wm5ueFk3RDlOM0Z6/cy9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTl0/WldScC9ZUzVwYzNS/dlkydHdhRzkwL2J5/NWpiMjB2YVdRdk1U/STMvTXpBd05UQTFN/eTl3YUc5MC9ieTlw/Ym1ScFlXNHRkSEpo/L1pHbDBhVzl1WVd3/dGMzQmwvWTJsaGJD/MXpkMlZsZEMxbS9i/MjlrTFdkMWJHRmlM/V3BoL2JYVnVMbXB3/Wno5elBUWXgvTW5n/Mk1USW1kejB3Sm1z/OS9NakFtWXoxTVRI/QmtUSEZWL2FqUnJZ/VlZPYjJaM1EweDEv/YkZWUWVWRnRNSHBO/U1hWWC9SbFJETWtN/dE0yc3pkVkpKL1BR.jpeg" alt="Dish 7">
+                <div class="carousel-caption">Gulab Jamun</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/JKS7YPjBp5muJ7fYlCDvcgb2WIiFKWNGqvHCC6XR5UM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vb0pLSnZf/Z2hlY1pBQ0VJT0Rp/R1pJeEZxdEFGMk1y/V0ozMlB4R3EwaUlH/MC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTkw/YUhWdC9Zbk11WkhK/bFlXMXpkR2x0L1pT/NWpiMjB2WWk5MFlX/NWsvYjI5eWFTMWph/R2xqYTJWdS9MWGRv/YjJ4bExXNWhZVzR0/L2NtRnBkR0V0Y0ds/c1lYVXQvY21salpT/MTBiM0F0ZG1sbC9k/eTFpYkdGdWF5MXpj/R0ZqL1pTMTBZVzVr/YjI5eWFTMWovYUds/amEyVnVMWGRvYjJ4/bC9MVzVoWVc0dGNt/RnBkR0V0L01URTFO/RE00TkRVMUxtcHcv/Wnc.jpeg" alt="Dish 8">
+                <div class="carousel-caption">Tandoori Chicken</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/_KzyYffkjo9JW4LU5uwcXQTuwKcc1MnY1RzK3nMhWSA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vSV9nYU1r/c2dHSVd2QlRVY2JY/VG1ybGlaSENWb0U4/NzFfLTEwdE5nUDgx/VS9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTkw/TkM1bS9kR05rYmk1/dVpYUXZhbkJuL0x6/RXlMelF6THpNMUx6/UTEvTHpNMk1GOUdY/ekV5TkRNei9OVFEx/TkRGZmNIZG9aR3Rv/L2VIbEtURGhpU1hG/S04zVmkvTW01VGQz/aFpNa00xU1ZKUS9T/R291YW5Cbg.jpeg" alt="Malai Kofta">
+                <div class="carousel-caption">Malai Kofta</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/o6ctk1PidgZ_BTa1azKbF08e3y6UZZc-7h6KxIgtZUs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vMFZEQWE0/NTZya2E2dFI1T3ky/U04xVnVKQmVjQjhI/TUdVbzJKZERSTU5i/TS9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTkw/TXk1bS9kR05rYmk1/dVpYUXZhbkJuL0x6/QTNMelE0THpBekx6/UXcvTHpNMk1GOUdY/emMwT0RBei9OREF5/T0Y4eFFWaERSbEEy/L2JtZ3liVVozYkRN/eFluVTQvWW1KRFdW/UjJZMVF4VDBsUC9U/UzVxY0dj.jpeg" alt="Samosa">
+                <div class="carousel-caption">Samosa</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/qthtxI8FjJjSoN368fJ71lVvmX7KiWbe1yZzSlgHRao/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vN2g0QkY3/UkFnVENqYTg1MnJw/Z0F6aTB4bkFXbzgx/OXVseklQOE9Kcnpw/US9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTl0/WldScC9ZUzVwYzNS/dlkydHdhRzkwL2J5/NWpiMjB2YVdRdk1U/QXovTXpZMU5EY3lN/Qzl3YUc5MC9ieTl3/WVhZdFltaGhhbWt0/L1kyaGhZWFF1YW5C/blAzTTkvTmpFeWVE/WXhNaVozUFRBbS9h/ejB5TUNaalBXSkJl/SE5yL1RsSTNiemhE/Y25GeFprWjUvU1ZO/QlpGTmhXVW80Ym1a/Ri9Nbk14ZEZGcVVY/Qm9WREYyL1FrMDk.jpeg" alt="Pav Bhaji">
+                <div class="carousel-caption">Pav Bhaji</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/0-DhePZbHcsN0EKxBPFBH_KZZnWgiQGXqtBSIbTjJ50/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vN2dzSWQx/TFA3WEIzYzlsVHhh/NUJYV0tXVWhtT2Vf/TTBnQzcxY0hHczZ5/Yy9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTl0/WldScC9ZUzVwYzNS/dlkydHdhRzkwL2J5/NWpiMjB2YVdRdk1U/RTMvTURNM05EWTNO/eTl3YUc5MC9ieTlr/WVd3dGJXRnJhR0Z1/L2FTMWhkQzFrWVhK/ckxXSmgvWTJ0bmNt/OTFibVF1YW5Cbi9Q/M005TmpFeWVEWXhN/aVozL1BUQW1hejB5/TUNaalBYUjAvUzI1/cWR6WmZUbTV4UjJ4/Si9abFowTTJkRWVV/ZDZaMlZrL09YUndU/RlZUZUVZMmRuZE8v/TVV4UU0yODk.jpeg" alt="Dal Makhani">
+                <div class="carousel-caption">Dal Makhani</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgs.search.brave.com/uPkSJqjJJ9QLk4akh-1Ke9qxbM-2oQ-vfU4jOh_ot5Y/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vcjZzYjRG/YTdNaEpNV0FTS3Vw/bDJFSDJmYmJVUk9y/akN2SWZ3MFVWYUVl/RS9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTl0/WldScC9ZUzVwYzNS/dlkydHdhRzkwL2J5/NWpiMjB2YVdRdk1U/RTEvTXpVd016YzNO/Qzl3YUc5MC9ieTl5/WVdwdFlTMXlhV05s/L0xYZHBkR2d0YjI1/cGIyNHQvYzJGc1lX/UXRiMjR0ZEdGaS9i/R1V0YTJsa2JtVjVM/V0psL1lXNXpMV2x1/WkdsaGJpMW0vYjI5/a0xtcHdaejl6UFRZ/eC9NbmcyTVRJbWR6/MHdKbXM5L01qQW1Z/ejF6TjNCdWRFSmkv/WkRobFFUQnlURGxR/U1RWeC9OVkZLU0d4/M0xYbE9RMHBWL1RH/ZEhabFZvT0VGUFNF/cHYvUFE.jpeg" alt="Rajma Chawal">
+                <div class="carousel-caption">Rajma Chawal</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section scroll-animate" id="reserve">
+        <h3>Reserve a Table</h3>
+        <form onsubmit="alert('Table reserved successfully!'); return false;">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="date" required>
+            <input type="time" required>
+            <textarea placeholder="Special Requests (optional)"></textarea>
+            <button type="submit">Book Now</button>
+        </form>
+    </section>
+
+    <section class="scroll-animate" id="map" style="padding:40px 0;text-align:center;background:#f8f8f8;">
+        <h3 style="margin-bottom:18px; color:#e85a4f; font-size:2rem;">Find Us on Map</h3>
+        <div style="max-width:700px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.10);border-radius:16px;overflow:hidden;">
+            <iframe
+                src="https://www.google.com/maps?q=Amol+Da+Dhaba,+Pune,+Maharashtra&output=embed"
+                width="100%" height="350" style="border:0;min-width:250px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <section class="scroll-animate" id="social" style="background:#fff;padding:32px 0;text-align:center;">
+        <h3 style="color:#e85a4f;font-size:1.7rem;margin-bottom:18px;">Follow Us</h3>
+        <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;">
+            <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" style="display:inline-block;">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="width:38px;height:38px;filter:invert(27%) sepia(98%) saturate(749%) hue-rotate(186deg) brightness(95%) contrast(92%);">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" style="display:inline-block;">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width:38px;height:38px;filter:invert(36%) sepia(99%) saturate(749%) hue-rotate(314deg) brightness(95%) contrast(92%);">
+            </a>
+            <a href="https://twitter.com/" target="_blank" aria-label="Twitter" style="display:inline-block;">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="Twitter" style="width:38px;height:38px;filter:invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.7) contrast(100%);">
+            </a>
+            <a href="https://wa.me/919876543210" target="_blank" aria-label="WhatsApp" style="display:inline-block;">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" style="width:38px;height:38px;filter:invert(49%) sepia(99%) saturate(749%) hue-rotate(88deg) brightness(95%) contrast(92%);">
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="scroll-animate" style="background:#222;color:#fff;padding:40px 0;text-align:center;">
+        <h3>Contact Us</h3>
+        <p>Email: contact@amoldadhaba.com | Phone: +91 98765 43210</p>
+        <p>Address: Near Main Market, Pune, Maharashtra</p>
+    </section>
+
+    <!-- Offer Modal -->
+    <div class="offer-modal-backdrop" id="offerModal">
+        <div class="offer-modal">
+            <button class="close-offer-btn" onclick="closeOfferModal()" aria-label="Close">&times;</button>
+            <h3>Special Offers!</h3>
+            <p>Enjoy <b>20% OFF</b> on your first online reservation!<br>
+                Free dessert with every table booking this week.<br>
+                <span style="color:#ff6f00;">Hurry, limited time only!</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Animated scroll effects using Intersection Observer
+        document.addEventListener('DOMContentLoaded', function () {
+            const scrollEls = document.querySelectorAll('.scroll-animate');
+            const observer = new window.IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.18 });
+            scrollEls.forEach(el => observer.observe(el));
+
+            // Show offer modal after 2 seconds
+            setTimeout(function () {
+                document.getElementById('offerModal').classList.add('active');
+            }, 2000);
+        });
+
+        function closeOfferModal() {
+            document.getElementById('offerModal').classList.remove('active');
+        }
+    </script>
+</body>
+
+</html>
